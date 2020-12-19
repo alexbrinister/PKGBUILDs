@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_JS_PROVIDER:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray-qt6
 _name=${pkgname#mingw-w64-}
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -81,7 +81,7 @@ build() {
         -DBUILTIN_ICON_THEMES:STRING=breeze;breeze-dark;Numix
         -DIMAGE_FORMAT_SUPPORT:STRING=Gif;ICO;Jpeg
         -DSVG_SUPPORT:BOOL=ON
-        -DSVG_ICON_SUPPORT:BOOL=0N
+        -DSVG_ICON_SUPPORT:BOOL=ON
         -DWEBVIEW_PROVIDER:STRING=none
     '
   )
@@ -112,7 +112,6 @@ build() {
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
         -DNO_LIBSYNCTHING:BOOL="${_disable_libsyncthing}" \
         -DUSE_LIBSYNCTHING:BOOL="${_enable_libsyncthing}" \
-        -DENABLE_QT_TRANSLATIONS:BOOL=OFF \
         ${_config_flags[$_cfg]} \
         ../
       VERBOSE=1 ninja
